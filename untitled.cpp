@@ -6,9 +6,9 @@ using namespace std;
 template <typename T>
 class Node{
         public:
-                //µ¥ÀÌÅÍ¸¦ ÀúÀåÇÒ º¯¼ö
+                //ë°ì´í„°ë¥¼ ì €ì¥í•  ë³€ìˆ˜
                 T data;
-                //³ëµå±¸Á¶Ã¼ ÀÌ¿ë; ´ÙÀ½³ëµåÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÒ Æ÷ÀÎÅÍ
+                //ë…¸ë“œêµ¬ì¡°ì²´ ì´ìš©; ë‹¤ìŒë…¸ë“œì˜ ì£¼ì†Œë¥¼ ì €ì¥í•  í¬ì¸í„°
                 Node *link;
 
                 Node(T element){
@@ -21,47 +21,45 @@ class Node{
 template <typename T>
 class LinkedList{
         protected:
-                //Ã¹¹øÂ° ³ëµåÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÒ Æ÷ÀÎÅÍ
+                //ì²«ë²ˆì§¸ ë…¸ë“œì˜ ì£¼ì†Œë¥¼ ì €ì¥í•  í¬ì¸í„°
                 Node<T> *first;
                 int current_size;
         public:
-                //»ı¼ºÀÚ, ÃÊ±âÈ­
+                //ìƒì„±ì, ì´ˆê¸°í™”
                 LinkedList(){
                         first = 0;
                         current_size = 0;
                 };
 
-                //³ëµå °³¼ö¸¦ ¸®ÅÏ
+                //ë…¸ë“œ ê°œìˆ˜ë¥¼ ë¦¬í„´
                 int GetSize(){
                         return current_size;
                 };
 
-                //¸Ç ¾Õ¿¡ ¿ø¼Ò¸¦ »ğÀÔ, LinkedList¿Í Stack µÑ´Ù °°´Ù
+                //ë§¨ ì•ì— ì›ì†Œë¥¼ ì‚½ì…, LinkedListì™€ Stack ë‘˜ë‹¤ ê°™ë‹¤
                 void Insert(T element);
 
-                //¸Ç µÚÀÇ ¿ø¼Ò¸¦ »èÁ¦, Á¦ÀÏ ³ªÁß¿¡ µé¾î¿Â ¿ø¼Ò »èÁ¦  - LinkedList
+                //ë§¨ ë’¤ì˜ ì›ì†Œë¥¼ ì‚­ì œ, ì œì¼ ë‚˜ì¤‘ì— ë“¤ì–´ì˜¨ ì›ì†Œ ì‚­ì œ  - LinkedList
                 virtual bool Delete(T &element);
 
-                //¸®½ºÆ® Ãâ·Â
+                //ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
                 void Print();
 };
 
-
-
-//»õ ³ëµå¸¦ ¸Ç ¾Õ¿¡ ºÙÀÌ°í °ªÀ» ³ÖÀ½
+//ìƒˆ ë…¸ë“œë¥¼ ë§¨ ì•ì— ë¶™ì´ê³  ê°’ì„ ë„£ìŒ
 template <typename T>
 void LinkedList<T>::Insert(T element){
-        //³ëµå »ı¼º
+        //ë…¸ë“œ ìƒì„±
         Node<T> *newnode = new Node<T>(element);
 
-        //»õ ³ëµå°¡ Ã¹¹øÂ° ³ëµå¸¦ °¡¸®Å´
-        //newnode´Â Æ÷ÀÎÅÍÀÌ±â ¶§¹®¿¡ -> ¸¦ »ç¿ëÇØ ÇÔ¼ö, º¯¼ö¸¦ ºÒ·¯¿È newnode.link¿Í ¶æÀº °°´Ù
+        //ìƒˆ ë…¸ë“œê°€ ì²«ë²ˆì§¸ ë…¸ë“œë¥¼ ê°€ë¦¬í‚´
+        //newnodeëŠ” í¬ì¸í„°ì´ê¸° ë•Œë¬¸ì— -> ë¥¼ ì‚¬ìš©í•´ í•¨ìˆ˜, ë³€ìˆ˜ë¥¼ ë¶ˆëŸ¬ì˜´ newnode.linkì™€ ëœ»ì€ ê°™ë‹¤
         newnode -> link = first;
         first = newnode;
         current_size++;
 };
 
-//¸¶Áö¸· ³ëµåÀÇ °ªÀ» ¸®ÅÏÇÏ¸é¼­ ¸Ş¸ğ¸®¿¡¼­ ÇÒ´ç ÇØÁ¦
+//ë§ˆì§€ë§‰ ë…¸ë“œì˜ ê°’ì„ ë¦¬í„´í•˜ë©´ì„œ ë©”ëª¨ë¦¬ì—ì„œ í• ë‹¹ í•´ì œ
 template <typename T>
 bool LinkedList<T>::Delete(T &element){
 
@@ -71,9 +69,9 @@ bool LinkedList<T>::Delete(T &element){
         Node<T> *current = first;
         Node<T> *previous = 0;
 
-        //¸¶Áö¸· ³ëµå±îÁö Ã£¾Æ°¡´Â ¹İº¹¹®
+        //ë§ˆì§€ë§‰ ë…¸ë“œê¹Œì§€ ì°¾ì•„ê°€ëŠ” ë°˜ë³µë¬¸
         while(1){
-                if (current->link == 0){  //¸¶Áö¸· ³ëµå¸¦ Ã£´Â°Í
+                if (current->link == 0){  //ë§ˆì§€ë§‰ ë…¸ë“œë¥¼ ì°¾ëŠ”ê²ƒ
                         if (previous)
                                 previous -> link = current -> link;
                         else
@@ -91,7 +89,7 @@ bool LinkedList<T>::Delete(T &element){
 };
 
 
-//¸®½ºÆ®¸¦ Ãâ·ÂÇÏ´Â Print ÇÔ¼ö
+//ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•˜ëŠ” Print í•¨ìˆ˜
 template <typename T>
 void LinkedList<T>::Print(){
         Node<T> *i;
@@ -119,12 +117,12 @@ template <typename T>
 class Stack : public LinkedList<T>{
         public:
                 bool Delete (T &element){
-                        //first°¡ 0ÀÌ¸é false¹İÈ¯
+                        //firstê°€ 0ì´ë©´ falseë°˜í™˜
                         if(this->first==0){
                         	return false;
 						}
 						
-						// LinkedList¿Í ´Ş¸® StackÀº current°¡ °¡¸®Å°´Â °÷À» »èÁ¦
+						// LinkedListì™€ ë‹¬ë¦¬ Stackì€ currentê°€ ê°€ë¦¬í‚¤ëŠ” ê³³ì„ ì‚­ì œ
 						Node<T> *current;
 						current = this->first;
 						this->first=current->link;
@@ -148,17 +146,17 @@ int main()
 	dList.Insert(-0.987654);
 	dList.Print();
 	dList.Delete(dVal);
-	cout<<"»èÁ¦µÈ ¸¶Áö¸· ¿ø¼Ò: "<<dVal<<endl;
+	cout<<"ì‚­ì œëœ ë§ˆì§€ë§‰ ì›ì†Œ: "<<dVal<<endl;
 	dList.Print();
 	dList.Insert(777.777);
 	dList.Print();
 	dList.Delete(dVal);
-	cout<<"»èÁ¦µÈ ¸¶Áö¸· ¿ø¼Ò: "<<dVal<<endl;
+	cout<<"ì‚­ì œëœ ë§ˆì§€ë§‰ ì›ì†Œ: "<<dVal<<endl;
 	dList.Delete(dVal);
-	cout<<"»èÁ¦µÈ ¸¶Áö¸· ¿ø¼Ò: "<<dVal<<endl;
+	cout<<"ì‚­ì œëœ ë§ˆì§€ë§‰ ì›ì†Œ: "<<dVal<<endl;
 	dList.Print();
 	dList.Delete(dVal);
-	cout<<"»èÁ¦µÈ ¸¶Áö¸· ¿ø¼Ò: "<<dVal<<endl;
+	cout<<"ì‚­ì œëœ ë§ˆì§€ë§‰ ì›ì†Œ: "<<dVal<<endl;
 	dList.Print();
 	strList.Insert("This");
 	strList.Insert("is a");
@@ -166,7 +164,7 @@ int main()
 	strList.Insert("Example");
 	strList.Print();
 	strList.Delete(strVal);
-	cout<<"»èÁ¦µÈ ¸¶Áö¸· ¿ø¼Ò: "<<strVal<<endl;
+	cout<<"ì‚­ì œëœ ë§ˆì§€ë§‰ ì›ì†Œ: "<<strVal<<endl;
 	strList.Insert("Class");
 	strList.Print();
 	return 0;
