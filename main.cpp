@@ -10,7 +10,8 @@ void prnMenu(){
 }
 
 int main(){
-	    int mode, selectNumber, tmpItem;
+	    cout<<"branch1"<<endl;
+		int mode, selectNumber, tmpItem;
 		LinkedList<int> *p;
 		bool flag = false;
 
