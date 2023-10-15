@@ -108,7 +108,7 @@ void LinkedList<T>::Print(){
 
                         else {
                                 cout << "[" << index << "|";
-                                cout << i -> data << "]->";
+                                cout << i -> data << "]-->";
                                 index++;
                         }
                 }
